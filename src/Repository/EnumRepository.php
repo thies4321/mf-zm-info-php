@@ -12,18 +12,18 @@ final class EnumRepository extends AbstractEnumRepository implements EnumReposit
     /**
      * @return EnumInterface[]
      */
-    public function findByName(string $name): array
+    public function findByType(string $type): array
     {
         $result = [];
 
-        foreach ($this->collection as $enumName => $enums) {
-            if ($name !== $enumName) {
+        foreach ($this->collection as $enumType => $enums) {
+            if ($type !== $enumType) {
                 continue;
             }
 
             foreach ($enums as $enum) {
                 $result[] = Enum::fromArray([
-                    'type' => $enumName,
+                    'type' => $enumType,
                     'description' => $enum['desc'],
                     'value' => $enum['val']
                 ]);
@@ -40,10 +40,10 @@ final class EnumRepository extends AbstractEnumRepository implements EnumReposit
     {
         $result = [];
 
-        foreach ($this->collection as $enumName => $enums) {
+        foreach ($this->collection as $enumType => $enums) {
             foreach ($enums as $enum) {
                 $result[] = Enum::fromArray([
-                    'type' => $enumName,
+                    'type' => $enumType,
                     'description' => $enum['desc'],
                     'value' => $enum['val']
                 ]);

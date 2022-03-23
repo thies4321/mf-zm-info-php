@@ -24,8 +24,8 @@ require __DIR__ . '/../vendor/autoload.php';
 //print_r($data);
 //die();
 
-//$repo = new \MfZmInfo\Repository\EnumRepository();
-//print_r($repo->findAll());
+$repo = new \MfZmInfo\Repository\EnumRepository();
+print_r($repo->findAll());
 
-$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/structs.json'), true);
-print_r($data['SamusData']);
+//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/structs.json'), true);
+//print_r($data['SamusData']);

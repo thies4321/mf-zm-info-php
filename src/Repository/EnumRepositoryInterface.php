@@ -9,7 +9,7 @@ interface EnumRepositoryInterface
     /**
      * @return EnumInterface[]
      */
-    public function findByName(string $name): array;
+    public function findByType(string $type): array;
 
     /**
      * @return EnumInterface[]

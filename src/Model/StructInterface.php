@@ -6,9 +6,11 @@ namespace MfZmInfo\Model;
 
 interface StructInterface
 {
+    public function getType(): string;
+
     public function getDescription(): string;
 
-    public function getType(): string;
+    public function getStructType(): string;
 
     public function offset(): string;
 
