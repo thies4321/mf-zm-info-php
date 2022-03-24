@@ -17,4 +17,9 @@ final class ResourceNotFoundException extends \Exception
     {
         return new self(sprintf('Tried to fetch structs.json but was not found for path [%s]', $path));
     }
+
+    public static function forData(string $path): self
+    {
+        return new self(sprintf('Tried to fetch data.json but was not found for path [%s]', $path));
+    }
 }

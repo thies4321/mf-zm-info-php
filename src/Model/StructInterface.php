@@ -10,14 +10,5 @@ interface StructInterface
 
     public function getSize(): string;
 
-    public function getDescription(): string;
-
-    public function getStructType(): string;
-
-    public function offset(): string;
-
-    /**
-     * @return EnumInterface[]
-     */
-    public function getEnums(): array;
+    public function getVariables(): array;
 }

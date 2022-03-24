@@ -10,11 +10,11 @@ interface DataInterface
 
     public function getLabel(): string;
 
-    public function getType(): string;
+    public function getType(): ?string;
 
-    public function getAddress(): array;
+    public function getAddress(): string;
 
-    public function getCount(): ?int;
+    public function getCount(): ?string;
 
-    public function getEnums();
+    public function getSize(): ?string;
 }

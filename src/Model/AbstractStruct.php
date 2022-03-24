@@ -4,22 +4,53 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Model;
 
+use MfZmInfo\Exception\InvalidVariableTypeException;
+use MfZmInfo\Exception\MissingVariableException;
+
+use function array_key_exists;
+use function gettype;
+use function is_string;
+
 abstract class AbstractStruct implements StructInterface
 {
     protected string $type;
 
     protected string $size;
 
-    protected string $description;
+    protected array $variables;
 
-    protected string $structType;
+    protected function validateVariables(array $variables): void
+    {
+        foreach ($variables as $variable) {
+            if (! array_key_exists('description', $variable)) {
+                throw MissingVariableException::forDescription();
+            }
 
-    protected string $offset;
+            if (! is_string($variable['description'])) {
+                throw InvalidVariableTypeException::forDescription('string', gettype($variable['description']));
+            }
 
-    /**
-     * @var EnumInterface[]
-     */
-    protected array $enums;
+            if (! array_key_exists('offset', $variable)) {
+                throw MissingVariableException::forOffset();
+            }
+
+            if (! is_string($variable['offset'])) {
+                throw InvalidVariableTypeException::forOffset('string', gettype($variable['offset']));
+            }
+
+            if (array_key_exists('type', $variable)) {
+                if (! is_string($variable['type'])) {
+                    throw InvalidVariableTypeException::forType('string', gettype($variable['type']));
+                }
+            }
+
+            if (array_key_exists('enum', $variable)) {
+                if (! is_string($variable['enum'])) {
+                    throw InvalidVariableTypeException::forEnum('string', gettype($variable['enum']));
+                }
+            }
+        }
+    }
 
     public function getType(): string
     {
@@ -31,26 +62,8 @@ abstract class AbstractStruct implements StructInterface
         return $this->size;
     }
 
-    public function getDescription(): string
+    public function getVariables(): array
     {
-        return $this->description;
-    }
-
-    public function getStructType(): string
-    {
-        return $this->structType;
-    }
-
-    public function offset(): string
-    {
-        return $this->offset;
-    }
-
-    /**
-     * @return EnumInterface[]
-     */
-    public function getEnums(): array
-    {
-        return $this->enums;
+        return $this->variables;
     }
 }

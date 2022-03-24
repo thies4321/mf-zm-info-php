@@ -7,13 +7,12 @@ namespace MfZmInfo\Repository;
 use MfZmInfo\Exception\InvalidObjectException;
 use MfZmInfo\Model\Struct;
 use MfZmInfo\Model\StructInterface;
+use function array_key_exists;
 
 final class StructRepository extends AbstractStructRepository implements StructRepositoryInterface
 {
     /**
      * @return StructInterface[]
-     *
-     * @throws InvalidObjectException
      */
     public function findByType(string $type): array
     {
@@ -24,20 +23,27 @@ final class StructRepository extends AbstractStructRepository implements StructR
                 continue;
             }
 
+            $variables = [];
+
             foreach ($structs['vars'] as $var) {
-                if (isset($var['enum'])) {
-                    $enums = $this->enumRepository->findByType($var['enum']);
+                $varStruct = [
+                    'description' => $var['desc'],
+                    'type' => $var['type'],
+                    'offset' => $var['offset'],
+                ];
+
+                if (array_key_exists('enum', $var)) {
+                    $varStruct['enum'] = $var['enum'];
                 }
 
-                $result[] = Struct::fromArray([
-                    'type' => $structType,
-                    'size' => $structs['size'],
-                    'description' => $var['desc'],
-                    'structType' => $var['type'] ?? '',
-                    'offset' => $var['offset'],
-                    'enums' => $enums ?? [],
-                ]);
+                $variables[] = $varStruct;
             }
+
+            $result[] = Struct::fromArray([
+                'type' => $structType,
+                'size' => $structs['size'],
+                'variables' => $variables,
+            ]);
         }
 
         return $result;
@@ -45,28 +51,36 @@ final class StructRepository extends AbstractStructRepository implements StructR
 
     /**
      * @return StructInterface[]
-     *
-     * @throws InvalidObjectException
      */
     public function findAll(): array
     {
         $result = [];
 
         foreach ($this->collection as $structType => $structs) {
+            $variables = [];
+
             foreach ($structs['vars'] as $var) {
-                if (isset($var['enum'])) {
-                    $enums = $this->enumRepository->findByType($var['enum']);
+                $varStruct = [
+                    'description' => $var['desc'],
+                    'offset' => $var['offset'],
+                ];
+
+                if (array_key_exists('type', $var)) {
+                    $varStruct['type'] = $var['type'];
                 }
 
-                $result[] = Struct::fromArray([
-                    'type' => $structType,
-                    'size' => $structs['size'],
-                    'description' => $var['desc'],
-                    'structType' => $var['type'] ?? '',
-                    'offset' => $var['offset'],
-                    'enums' => $enums ?? [],
-                ]);
+                if (array_key_exists('enum', $var)) {
+                    $varStruct['enum'] = $var['enum'];
+                }
+
+                $variables[] = $varStruct;
             }
+
+            $result[] = Struct::fromArray([
+                'type' => $structType,
+                'size' => $structs['size'],
+                'variables' => $variables,
+            ]);
         }
 
         return $result;
