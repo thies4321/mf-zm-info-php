@@ -12,4 +12,9 @@ final class ResourceNotFoundException extends \Exception
     {
         return new self(sprintf('Tried to fetch enums.json but was not found for path [%s]', $path));
     }
+
+    public static function forStructs(string $path): self
+    {
+        return new self(sprintf('Tried to fetch structs.json but was not found for path [%s]', $path));
+    }
 }

@@ -8,6 +8,8 @@ abstract class AbstractStruct implements StructInterface
 {
     protected string $type;
 
+    protected string $size;
+
     protected string $description;
 
     protected string $structType;
@@ -22,6 +24,11 @@ abstract class AbstractStruct implements StructInterface
     public function getType(): string
     {
         return $this->type;
+    }
+
+    public function getSize(): string
+    {
+        return $this->size;
     }
 
     public function getDescription(): string

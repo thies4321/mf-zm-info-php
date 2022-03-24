@@ -19,13 +19,16 @@ require __DIR__ . '/../vendor/autoload.php';
 //print_r($data[9]);
 
 //
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/enums.json'), true);
-//
-//print_r($data);
-//die();
+$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/code.json'), true);
 
-$repo = new \MfZmInfo\Repository\EnumRepository();
-print_r($repo->findAll());
+print_r($data);
+die();
+
+//$repo = new \MfZmInfo\Repository\EnumRepository();
+//print_r($repo->findByType('PrimarySpriteID'));
+
+//$repo = new \MfZmInfo\Repository\StructRepository();
+//print_r($repo->findByType('PrimarySpriteID'));
 
 //$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/structs.json'), true);
 //print_r($data['SamusData']);

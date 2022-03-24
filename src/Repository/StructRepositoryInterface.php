@@ -8,7 +8,10 @@ use MfZmInfo\Model\StructInterface;
 
 interface StructRepositoryInterface
 {
-    public function getByType(): ?StructInterface;
+    /**
+     * @return StructInterface[]
+     */
+    public function findByType(string $type): array;
 
     /**
      * @return StructInterface[]

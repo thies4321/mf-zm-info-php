@@ -8,6 +8,8 @@ interface StructInterface
 {
     public function getType(): string;
 
+    public function getSize(): string;
+
     public function getDescription(): string;
 
     public function getStructType(): string;
