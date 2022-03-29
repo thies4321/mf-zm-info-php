@@ -15,4 +15,9 @@ final class MissingVariableException extends \Exception
     {
         return new self('Variable [offset] is missing');
     }
+
+    public static function forType(): self
+    {
+        return new self('Variable [type] is missing');
+    }
 }

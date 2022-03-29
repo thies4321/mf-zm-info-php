@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace MfZmInfo\Model;
 
 use MfZmInfo\Exception\InvalidRegionException;
+
+use MfZmInfo\Exception\InvalidVariableTypeException;
+use MfZmInfo\Exception\MissingVariableException;
+use function array_key_exists;
 use function in_array;
 
 abstract class AbstractCode implements CodeInterface, RegionInterface
@@ -27,9 +31,31 @@ abstract class AbstractCode implements CodeInterface, RegionInterface
 
     protected string $region;
 
+    /**
+     * @throws MissingVariableException
+     */
     protected function validateParameters(array $parameters): void
     {
-        
+        foreach ($parameters as $parameter) {
+            if (! array_key_exists('description', $parameter)) {
+                throw MissingVariableException::forDescription();
+            }
+
+            if (! array_key_exists('type', $parameter)) {
+                throw MissingVariableException::forType();
+            }
+        }
+    }
+
+    protected function validateReturn(array $returns): void
+    {
+        foreach ($returns as $return) {
+            foreach ($return as $key => $value) {
+                if (! in_array($key, ['description', 'type', 'enum'])) {
+                    throw new InvalidVariableTypeException();
+                }
+            }
+        }
     }
 
     /**

@@ -62,5 +62,19 @@ require __DIR__ . '/../vendor/autoload.php';
 //$repo = new \MfZmInfo\Repository\DataRepository();
 //print_r($repo->findAll());
 
-$repo = new \MfZmInfo\Repository\CodeRepository();
-print_r($repo->findAll());
+//$repo = new \MfZmInfo\Repository\CodeRepository();
+//print_r($repo->findAll());
+
+$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/ram.json'), true);
+//print_r($data);
+
+$unique = [];
+
+foreach ($data as $key => $value) {
+    if (! array_key_exists('type', $value)) {
+        print_r($value);
+        die();
+    }
+}
+
+//print_r(array_unique($unique));

@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace MfZmInfo\Model;
 
 use MfZmInfo\Exception\InvalidRegionException;
-use function array_key_exists;
+use MfZmInfo\Exception\MissingVariableException;
 
 final class Code extends AbstractCode implements CodeInterface
 {
     /**
      * @throws InvalidRegionException
+     * @throws MissingVariableException
      */
     public function __construct(
         string $description,
@@ -23,6 +24,9 @@ final class Code extends AbstractCode implements CodeInterface
         ?string $notes,
         string $region
     ) {
+        $this->validateParameters($parameters);
+        $this->validateReturn($return);
+
         $this->description = $description;
         $this->label = $label;
         $this->address = $address;
@@ -37,6 +41,7 @@ final class Code extends AbstractCode implements CodeInterface
 
     /**
      * @throws InvalidRegionException
+     * @throws MissingVariableException
      */
     public static function fromArray(array $code): self
     {
