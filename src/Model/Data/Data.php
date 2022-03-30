@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Data;
 
 use MfZmInfo\Exception\InvalidRegionException;
+use MfZmInfo\Model\DataInterface;
 
 final class Data extends AbstractData implements DataInterface
 {

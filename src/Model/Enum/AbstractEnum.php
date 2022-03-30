@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Enum;
+
+use MfZmInfo\Model\EnumInterface;
 
 abstract class AbstractEnum implements EnumInterface
 {

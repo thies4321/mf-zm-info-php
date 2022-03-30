@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Repository;
+namespace MfZmInfo\Repository\DataRepository;
 
 use MfZmInfo\Exception\InvalidRegionException;
-use MfZmInfo\Model\Data;
+use MfZmInfo\Model\Data\Data;
 use MfZmInfo\Model\DataInterface;
-
 use MfZmInfo\Model\RegionInterface;
+use MfZmInfo\Repository\DataRepositoryInterface;
 use function is_array;
 use function key_exists;
 

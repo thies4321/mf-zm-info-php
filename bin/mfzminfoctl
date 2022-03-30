@@ -65,16 +65,24 @@ require __DIR__ . '/../vendor/autoload.php';
 //$repo = new \MfZmInfo\Repository\CodeRepository();
 //print_r($repo->findAll());
 
-$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/ram.json'), true);
+//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/ram.json'), true);
 //print_r($data);
 
-$unique = [];
+//$unique = [];
 
-foreach ($data as $key => $value) {
-    if (! array_key_exists('type', $value)) {
-        print_r($value);
-        die();
-    }
-}
+//foreach ($data as $key => $value) {
+//    if (! array_key_exists('addr', $value)) {
+//        print_r($value);
+//        die();
+//    }
+//    if (array_key_exists('count', $value) && is_array($value['count'])) {
+//        print_r($value);
+//        die();
+//    }
+//}
 
 //print_r(array_unique($unique));
+
+$game = new \MfZmInfo\Model\Game\ZeroMission();
+$repo = new \MfZmInfo\Repository\CodeRepository\CodeRepository($game);
+//print_r($repo->findAll())

@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Code;
 
 use MfZmInfo\Exception\InvalidRegionException;
-
 use MfZmInfo\Exception\InvalidVariableTypeException;
 use MfZmInfo\Exception\MissingVariableException;
+use MfZmInfo\Model\CodeInterface;
+use MfZmInfo\Model\RegionInterface;
 use function array_key_exists;
 use function in_array;
 

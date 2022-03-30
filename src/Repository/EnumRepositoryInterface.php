@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MfZmInfo\Repository;
 
 use MfZmInfo\Model\EnumInterface;

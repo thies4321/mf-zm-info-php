@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Code;
 
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Exception\MissingVariableException;
+use MfZmInfo\Model\CodeInterface;
 
 final class Code extends AbstractCode implements CodeInterface
 {

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Ram;
 
 use MfZmInfo\Exception\InvalidRegionException;
+use MfZmInfo\Model\RamInterface;
 
 final class Ram extends AbstractRam implements RamInterface
 {
@@ -16,6 +17,7 @@ final class Ram extends AbstractRam implements RamInterface
         string $label,
         ?string $size,
         ?string $type,
+        string $address,
         ?string $count,
         ?string $enum,
         string $region
@@ -24,6 +26,7 @@ final class Ram extends AbstractRam implements RamInterface
         $this->label = $label;
         $this->size = $size;
         $this->type = $type;
+        $this->address = $address;
         $this->count = $count;
         $this->enum = $enum;
 
@@ -33,13 +36,14 @@ final class Ram extends AbstractRam implements RamInterface
     /**
      * @throws InvalidRegionException
      */
-    public function fromArray(array $ram): self
+    public static function fromArray(array $ram): self
     {
         return new self(
             $ram['description'],
             $ram['label'],
             $ram['size'],
             $ram['type'],
+            $ram['address'],
             $ram['count'],
             $ram['enum'],
             $ram['region']

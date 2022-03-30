@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Repository;
+namespace MfZmInfo\Repository\EnumRepository;
 
-use MfZmInfo\Model\Enum;
+use MfZmInfo\Model\Enum\Enum;
 use MfZmInfo\Model\EnumInterface;
+use MfZmInfo\Repository\EnumRepositoryInterface;
 
 final class EnumRepository extends AbstractEnumRepository implements EnumRepositoryInterface
 {

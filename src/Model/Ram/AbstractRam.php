@@ -2,27 +2,30 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Ram;
 
 use MfZmInfo\Exception\InvalidRegionException;
-
+use MfZmInfo\Model\RamInterface;
+use MfZmInfo\Model\RegionInterface;
 use function in_array;
 
-abstract class AbstractData implements DataInterface, RegionInterface
+abstract class AbstractRam implements RamInterface, RegionInterface
 {
-    protected string $region;
-
     protected string $description;
 
     protected string $label;
 
-    protected ?string $type;
-
     protected string $address;
+
+    protected ?string $size;
+
+    protected ?string $type;
 
     protected ?string $count;
 
-    protected ?string $size;
+    protected ?string $enum;
+
+    protected string $region;
 
     /**
      * @throws InvalidRegionException
@@ -36,11 +39,6 @@ abstract class AbstractData implements DataInterface, RegionInterface
         $this->region = $region;
     }
 
-    public function getRegion(): string
-    {
-        return $this->region;
-    }
-
     public function getDescription(): string
     {
         return $this->description;
@@ -51,14 +49,19 @@ abstract class AbstractData implements DataInterface, RegionInterface
         return $this->label;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
     public function getAddress(): string
     {
         return $this->address;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->size;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 
     public function getCount(): ?string
@@ -66,8 +69,13 @@ abstract class AbstractData implements DataInterface, RegionInterface
         return $this->count;
     }
 
-    public function getSize(): ?string
+    public function getEnum(): ?string
     {
-        return $this->size;
+        return $this->enum;
+    }
+
+    public function getRegion(): string
+    {
+        return $this->region;
     }
 }

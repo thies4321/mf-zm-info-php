@@ -23,11 +23,3 @@ interface CodeInterface
     public function getNotes(): ?string;
 }
 
-//[0] => desc
-//[1] => label
-//[2] => addr
-//[3] => size
-//[4] => mode
-//[5] => params
-//[6] => return
-//    [7] => notes

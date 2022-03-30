@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Repository;
+namespace MfZmInfo\Repository\StructRepository;
 
-use MfZmInfo\Exception\InvalidObjectException;
-use MfZmInfo\Model\Struct;
+use MfZmInfo\Model\Struct\Struct;
 use MfZmInfo\Model\StructInterface;
+use MfZmInfo\Repository\StructRepositoryInterface;
 use function array_key_exists;
 
 final class StructRepository extends AbstractStructRepository implements StructRepositoryInterface

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Model;
+namespace MfZmInfo\Model\Struct;
 
 use MfZmInfo\Exception\InvalidVariableTypeException;
 use MfZmInfo\Exception\MissingVariableException;
-
+use MfZmInfo\Model\StructInterface;
 use function array_key_exists;
 use function gettype;
 use function is_string;
@@ -19,6 +19,9 @@ abstract class AbstractStruct implements StructInterface
 
     protected array $variables;
 
+    /**
+     * @throws MissingVariableException
+     */
     protected function validateVariables(array $variables): void
     {
         foreach ($variables as $variable) {
