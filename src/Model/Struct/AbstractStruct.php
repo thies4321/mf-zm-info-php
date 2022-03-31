@@ -9,7 +9,9 @@ use MfZmInfo\Exception\MissingVariableException;
 use MfZmInfo\Model\StructInterface;
 use function array_key_exists;
 use function gettype;
+use function is_null;
 use function is_string;
+use function print_r;
 
 abstract class AbstractStruct implements StructInterface
 {
@@ -42,7 +44,7 @@ abstract class AbstractStruct implements StructInterface
             }
 
             if (array_key_exists('type', $variable)) {
-                if (! is_string($variable['type'])) {
+                if (! is_string($variable['type']) && ! is_null($variable['type'])) {
                     throw InvalidVariableTypeException::forType('string', gettype($variable['type']));
                 }
             }

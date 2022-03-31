@@ -5,84 +5,16 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-//use Symfony\Component\Console\Application;
-//
-//$application = new Application();
-//
-//$application->run();
+use Symfony\Component\Console\Application;
 
+$application = new Application();
 
+$application->addCommands([
+        new \MfZmInfo\Command\Fusion\GetRamMap(),
+]);
 
+$application->run();
 
-
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/data.json'), true);
-//print_r($data);
-
-
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/structs.json'), true);
-//
-//print_r($data);
-//die();
-
-//$repo = new \MfZmInfo\Repository\EnumRepository();
-//print_r($repo->findByType('AnimatedPaletteEntry'));
-
-//$repo = new \MfZmInfo\Repository\StructRepository();
-//print_r($repo->findByType('AnimatedPaletteEntry'));
+//$game = \MfZmInfo\Model\Game\Fusion::usa();
+//$repo = new \MfZmInfo\Repository\StructRepository\StructRepository($game);
 //print_r($repo->findAll());
-
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/structs.json'), true);
-//print_r($data['SamusData']);
-
-//$repo = new \MfZmInfo\Repository\DataRepository();
-//print_r($repo->getByLabel('FileScreenTextPtrs'));
-//print_r($repo->getAll());
-
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/code.json'), true);
-//print_r($data);
-
-//$key = 'notes';
-//foreach ($data as $blah) {
-//    if (! array_key_exists($key, $blah)) {
-//        print_r($blah);
-//        die();
-//    }
-//}
-
-//foreach ($data as $key => $value) {
-//    $unique = [];
-//
-//    foreach ($value as $valueKey => $valueValue) {
-//        $unique[] = $valueKey;
-//    }
-//}
-//
-//print_r(array_unique($unique));
-
-//$repo = new \MfZmInfo\Repository\DataRepository();
-//print_r($repo->findAll());
-
-//$repo = new \MfZmInfo\Repository\CodeRepository();
-//print_r($repo->findAll());
-
-//$data = json_decode(file_get_contents(__DIR__ . '/../resources/mf/ram.json'), true);
-//print_r($data);
-
-//$unique = [];
-
-//foreach ($data as $key => $value) {
-//    if (! array_key_exists('addr', $value)) {
-//        print_r($value);
-//        die();
-//    }
-//    if (array_key_exists('count', $value) && is_array($value['count'])) {
-//        print_r($value);
-//        die();
-//    }
-//}
-
-//print_r(array_unique($unique));
-
-$game = new \MfZmInfo\Model\Game\ZeroMission();
-$repo = new \MfZmInfo\Repository\CodeRepository\CodeRepository($game);
-//print_r($repo->findAll())

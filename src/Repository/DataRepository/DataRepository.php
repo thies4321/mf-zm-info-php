@@ -23,45 +23,45 @@ final class DataRepository extends AbstractDataRepository implements DataReposit
     /**
      * @throws InvalidRegionException
      */
-    public function getByLabel(string $label, string $region = RegionInterface::REGION_USA): ?DataInterface
+    public function getByLabel(string $label): ?DataInterface
     {
         foreach ($this->collection as $data) {
             if ($data['label'] !== $label) {
                 continue;
             }
 
-            if (! key_exists(self::ADDRESS_MAPPING[$region], $data['addr'])) {
+            if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $data['addr'])) {
                 continue;
             }
 
             $count = $data['count'] ?? null;
 
             if (is_array($count)) {
-                if (! key_exists(self::ADDRESS_MAPPING[$region], $count)) {
+                if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $count)) {
                     continue;
                 }
 
-                $count = $count[self::ADDRESS_MAPPING[$region]];
+                $count = $count[self::ADDRESS_MAPPING[$this->game->getRegion()]];
             }
 
             $size = $data['size'] ?? null;
 
             if (is_array($size)) {
-                if (! key_exists(self::ADDRESS_MAPPING[$region], $size)) {
+                if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $size)) {
                     continue;
                 }
 
-                $size = $size[self::ADDRESS_MAPPING[$region]];
+                $size = $size[self::ADDRESS_MAPPING[$this->game->getRegion()]];
             }
 
             return Data::fromArray([
                 'description' => $data['desc'],
                 'label' => $data['label'],
                 'type' => $data['type'] ?? null,
-                'address' => $data['addr'][self::ADDRESS_MAPPING[$region]],
+                'address' => $data['addr'][self::ADDRESS_MAPPING[$this->game->getRegion()]],
                 'count' => $count,
                 'size' => $size,
-                'region' => $region,
+                'region' => $this->game->getRegion(),
             ]);
         }
 
@@ -73,43 +73,43 @@ final class DataRepository extends AbstractDataRepository implements DataReposit
      *
      * @throws InvalidRegionException
      */
-    public function findAll(string $region = RegionInterface::REGION_USA): array
+    public function findAll(): array
     {
         $result = [];
 
         foreach ($this->collection as $data) {
-            if (! key_exists(self::ADDRESS_MAPPING[$region], $data['addr'])) {
+            if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $data['addr'])) {
                 continue;
             }
 
             $count = $data['count'] ?? null;
 
             if (is_array($count)) {
-                if (! key_exists(self::ADDRESS_MAPPING[$region], $count)) {
+                if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $count)) {
                     continue;
                 }
 
-                $count = $count[self::ADDRESS_MAPPING[$region]];
+                $count = $count[self::ADDRESS_MAPPING[$this->game->getRegion()]];
             }
 
             $size = $data['size'] ?? null;
 
             if (is_array($size)) {
-                if (! key_exists(self::ADDRESS_MAPPING[$region], $size)) {
+                if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $size)) {
                     continue;
                 }
 
-                $size = $size[self::ADDRESS_MAPPING[$region]];
+                $size = $size[self::ADDRESS_MAPPING[$this->game->getRegion()]];
             }
 
             $result[] = Data::fromArray([
                 'description' => $data['desc'],
                 'label' => $data['label'],
                 'type' => $data['type'] ?? null,
-                'address' => $data['addr'][self::ADDRESS_MAPPING[$region]],
+                'address' => $data['addr'][self::ADDRESS_MAPPING[$this->game->getRegion()]],
                 'count' => $count,
                 'size' => $size,
-                'region' => $region,
+                'region' => $this->game->getRegion(),
             ]);
         }
 

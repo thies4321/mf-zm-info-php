@@ -9,6 +9,8 @@ use MfZmInfo\Model\Ram\Ram;
 use MfZmInfo\Model\RamInterface;
 use MfZmInfo\Model\RegionInterface;
 use MfZmInfo\Repository\RamRepositoryInterface;
+use function array_key_exists;
+use function is_array;
 
 final class RamRepository extends AbstractRamRepository implements RamRepositoryInterface
 {
@@ -23,15 +25,23 @@ final class RamRepository extends AbstractRamRepository implements RamRepository
      *
      * @throws InvalidRegionException
      */
-    public function findAll($region = RegionInterface::REGION_USA): array
+    public function findAll(): array
     {
         $result = [];
 
         foreach ($this->collection as $ram) {
-            $address = $ram['addr'][self::ADDRESS_MAPPING[$region]] ?? null;
+            $address = null;
+
+            if (is_array($ram['addr'])) {
+                $address = $ram['addr'][self::ADDRESS_MAPPING[$this->game->getRegion()]] ?? null;
+
+                if ($address === null) {
+                    continue;
+                }
+            }
 
             if ($address === null) {
-                continue;
+                $address = $ram['addr'];
             }
 
             $result[] = Ram::fromArray([
@@ -42,7 +52,7 @@ final class RamRepository extends AbstractRamRepository implements RamRepository
                 'address' => $address,
                 'count' => $ram['count'] ?? null,
                 'enum' => $ram['enum'] ?? null,
-                'region' => $region,
+                'region' => $this->game->getRegion(),
             ]);
         }
 

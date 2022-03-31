@@ -55,4 +55,19 @@ final class Fusion extends AbstractGame implements GameInterface
 
         parent::__construct($name, $shortName, $sha1, $md5, $crc, $region);
     }
+
+    public static function usa(): self
+    {
+        return new self(self::REGION_USA);
+    }
+
+    public static function eur(): self
+    {
+        return new self(self::REGION_EUR);
+    }
+
+    public static function jap(): self
+    {
+        return new self(self::REGION_JAP);
+    }
 }

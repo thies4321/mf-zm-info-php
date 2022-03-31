@@ -8,6 +8,8 @@ use MfZmInfo\Model\StructInterface;
 
 interface StructRepositoryInterface
 {
+    public function getByType(string $type): ?StructInterface;
+
     /**
      * @return StructInterface[]
      */

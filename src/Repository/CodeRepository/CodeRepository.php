@@ -19,7 +19,7 @@ final class CodeRepository extends AbstractCodeRepository implements CodeReposit
         RegionInterface::REGION_JAP => 'J',
     ];
 
-    public function findAll($region = RegionInterface::REGION_USA): array
+    public function findAll(): array
     {
         $result = [];
 
@@ -52,23 +52,23 @@ final class CodeRepository extends AbstractCodeRepository implements CodeReposit
             $size = $code['size'] ?? null;
 
             if (is_array($size)) {
-                if (! key_exists(self::ADDRESS_MAPPING[$region], $size)) {
+                if (! key_exists(self::ADDRESS_MAPPING[$this->game->getRegion()], $size)) {
                     continue;
                 }
 
-                $size = $size[self::ADDRESS_MAPPING[$region]];
+                $size = $size[self::ADDRESS_MAPPING[$this->game->getRegion()]];
             }
 
             $result[] = Code::fromArray([
                 'description' => $code['desc'],
                 'label' => $code['label'],
-                'address' => $code['addr'][self::ADDRESS_MAPPING[$region]],
+                'address' => $code['addr'][self::ADDRESS_MAPPING[$this->game->getRegion()]],
                 'size' => $size,
                 'mode' => $code['mode'],
                 'parameters' => $parameters,
                 'return' => $return,
                 'notes' => $code['notes'] ?? null,
-                'region' => $region,
+                'region' => $this->game->getRegion(),
             ]);
         }
 

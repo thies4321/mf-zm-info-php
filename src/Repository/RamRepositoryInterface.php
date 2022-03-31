@@ -12,5 +12,5 @@ interface RamRepositoryInterface
     /**
      * @return RamInterface[]
      */
-    public function findAll(string $region = RegionInterface::REGION_USA): array;
+    public function findAll(): array;
 }
