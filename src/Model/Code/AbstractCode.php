@@ -11,6 +11,9 @@ use MfZmInfo\Model\CodeInterface;
 use MfZmInfo\Model\RegionInterface;
 use function array_key_exists;
 use function in_array;
+use function is_a;
+use function is_array;
+use function print_r;
 
 abstract class AbstractCode implements CodeInterface, RegionInterface
 {
@@ -24,8 +27,14 @@ abstract class AbstractCode implements CodeInterface, RegionInterface
 
     protected string $mode;
 
+    /**
+     * @var array<string, array<string>>
+     */
     protected array $parameters;
 
+    /**
+     * @var array<string, array<string>>
+     */
     protected array $return;
 
     protected ?string $notes;
@@ -33,6 +42,8 @@ abstract class AbstractCode implements CodeInterface, RegionInterface
     protected string $region;
 
     /**
+     * @param array<string, array<string>> $parameters
+     *
      * @throws MissingVariableException
      */
     protected function validateParameters(array $parameters): void
@@ -48,13 +59,14 @@ abstract class AbstractCode implements CodeInterface, RegionInterface
         }
     }
 
+    /**
+     * @param array<string> $returns
+     */
     protected function validateReturn(array $returns): void
     {
-        foreach ($returns as $return) {
-            foreach ($return as $key => $value) {
-                if (! in_array($key, ['description', 'type', 'enum'])) {
-                    throw new InvalidVariableTypeException();
-                }
+        foreach ($returns as $key => $return) {
+            if (! in_array($key, ['description', 'type', 'enum'])) {
+                throw new InvalidVariableTypeException();
             }
         }
     }
@@ -96,11 +108,17 @@ abstract class AbstractCode implements CodeInterface, RegionInterface
         return $this->mode;
     }
 
+    /**
+     * @return string[][]
+     */
     public function getParameters(): array
     {
         return $this->parameters;
     }
 
+    /**
+     * @return string[][]
+     */
     public function getReturn(): array
     {
         return $this->return;

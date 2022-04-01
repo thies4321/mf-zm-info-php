@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Service;
 
+use MfZmInfo\Exception\MissingVariableException;
 use MfZmInfo\Model\GameInterface;
 use MfZmInfo\Model\Struct\Struct;
 use MfZmInfo\Repository\StructRepository\StructRepository;
@@ -22,17 +23,26 @@ final class LengthConverterService
         $this->structRepository = $structRepository ?? new StructRepository($game);
     }
 
-    public function getHexidecimalLength(?string $size, ?string $type, ?string $count): string
+    /**
+     * @throws MissingVariableException
+     */
+    public function getHexadecimalLength(?string $size, ?string $type, ?string $count): string
     {
         $length = $this->getLength($size, $type, $count);
         return strtoupper(dechex($length));
     }
 
+    /**
+     * @throws MissingVariableException
+     */
     public function getLength(?string $size, ?string $type, ?string $count): int
     {
         return $this->getSize($size, $type) * $this->getCount($count);
     }
 
+    /**
+     * @throws MissingVariableException
+     */
     private function getSize(?string $size = null, ?string $type = null): ?int
     {
         if ($size !== null) {

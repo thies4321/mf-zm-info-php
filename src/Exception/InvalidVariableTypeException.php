@@ -10,7 +10,7 @@ final class InvalidVariableTypeException extends \InvalidArgumentException
 {
     public static function forDescription(string $expected, string $received): self
     {
-        return new self(sprintf('Variable [description] should be a [%s] received [%s]', $expected));
+        return new self(sprintf('Variable [description] should be a [%s] received [%s]', $expected, $received));
     }
 
     public static function forType(string $expected, string $received): self
@@ -20,7 +20,7 @@ final class InvalidVariableTypeException extends \InvalidArgumentException
 
     public static function forOffset(string $expected, string $received): self
     {
-        return new self(sprintf('Variable [offset] should be a [%s] received [%s]', $expected));
+        return new self(sprintf('Variable [offset] should be a [%s] received [%s]', $expected, $received));
     }
 
     public static function forEnum(string $expected, string $received): self

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace MfZmInfo\Command\Fusion;
+namespace MfZmInfo\Command\ZeroMission;
 
 use MfZmInfo\Command\AbstractGetRamMap;
 use MfZmInfo\Exception\GameNotFoundException;
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Exception\ResourceNotFoundException;
-use MfZmInfo\Model\Game\Fusion;
+use MfZmInfo\Model\Game\ZeroMission;
 use MfZmInfo\Model\RegionInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'mf:map:ram',
-    description: 'Get RAM map for Metroid Fusion',
+    name: 'zm:map:ram',
+    description: 'Get RAM map for Metroid Zero Mission',
     hidden: false
 )]
 final class GetRamMap extends AbstractGetRamMap
@@ -29,7 +29,7 @@ final class GetRamMap extends AbstractGetRamMap
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $region = $input->getArgument('region') ?? RegionInterface::REGION_USA;
-        $this->game = new Fusion($region);
+        $this->game = new ZeroMission($region);
 
         return parent::execute($input, $output);
     }

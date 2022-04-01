@@ -10,11 +10,15 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 
 $application->addCommands([
-        new \MfZmInfo\Command\Fusion\GetRamMap(),
+    # Fusion
+    new \MfZmInfo\Command\Fusion\GetRamMap(),
+    new \MfZmInfo\Command\Fusion\GetRomCodeMap(),
+    new \MfZmInfo\Command\Fusion\GetRomDataMap(),
+
+    # Zero mission
+    new \MfZmInfo\Command\ZeroMission\GetRamMap(),
+    new \MfZmInfo\Command\ZeroMission\GetRomCodeMap(),
+    new \MfZmInfo\Command\ZeroMission\GetRomDataMap()
 ]);
 
 $application->run();
-
-//$game = \MfZmInfo\Model\Game\Fusion::usa();
-//$repo = new \MfZmInfo\Repository\StructRepository\StructRepository($game);
-//print_r($repo->findAll());
