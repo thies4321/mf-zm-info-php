@@ -10,7 +10,6 @@ use MfZmInfo\Model\StructInterface;
 use MfZmInfo\Repository\StructRepositoryInterface;
 
 use function array_key_exists;
-use function print_r;
 
 final class StructRepository extends AbstractStructRepository implements StructRepositoryInterface
 {

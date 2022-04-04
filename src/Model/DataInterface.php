@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Model;
 
-interface DataInterface
+interface DataInterface extends RegionInterface
 {
     public function getDescription(): string;
 

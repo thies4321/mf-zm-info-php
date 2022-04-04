@@ -7,9 +7,10 @@ namespace MfZmInfo\Model\Game;
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Model\GameInterface;
 use MfZmInfo\Model\RegionInterface;
+
 use function in_array;
 
-abstract class AbstractGame implements GameInterface, RegionInterface
+abstract class AbstractGame implements GameInterface
 {
     protected string $name;
 

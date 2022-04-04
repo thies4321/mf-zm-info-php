@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="revision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <file>src/</file>
+
+    <rule ref="PSR12"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+</ruleset>

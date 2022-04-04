@@ -6,6 +6,7 @@ namespace MfZmInfo\Model\Ram;
 
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Model\RamInterface;
+use MfZmInfo\Model\RegionInterface;
 
 final class Ram extends AbstractRam implements RamInterface
 {

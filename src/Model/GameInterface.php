@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Model;
 
-interface GameInterface
+interface GameInterface extends RegionInterface
 {
     public function getName(): string;
 
@@ -14,5 +14,5 @@ interface GameInterface
 
     public function getMd5(): string;
 
-    public function getCrc():string;
+    public function getCrc(): string;
 }

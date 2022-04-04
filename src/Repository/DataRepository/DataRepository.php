@@ -9,6 +9,7 @@ use MfZmInfo\Model\Data\Data;
 use MfZmInfo\Model\DataInterface;
 use MfZmInfo\Model\RegionInterface;
 use MfZmInfo\Repository\DataRepositoryInterface;
+
 use function is_array;
 use function key_exists;
 

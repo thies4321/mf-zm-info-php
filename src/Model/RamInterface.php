@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Model;
 
-interface RamInterface
+interface RamInterface extends RegionInterface
 {
     public function getDescription(): string;
 

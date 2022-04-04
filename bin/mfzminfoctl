@@ -11,11 +11,13 @@ $application = new Application();
 
 $application->addCommands([
     # Fusion
+    new \MfZmInfo\Command\Fusion\GetEnums(),
     new \MfZmInfo\Command\Fusion\GetRamMap(),
     new \MfZmInfo\Command\Fusion\GetRomCodeMap(),
     new \MfZmInfo\Command\Fusion\GetRomDataMap(),
 
     # Zero mission
+    new \MfZmInfo\Command\ZeroMission\GetEnums(),
     new \MfZmInfo\Command\ZeroMission\GetRamMap(),
     new \MfZmInfo\Command\ZeroMission\GetRomCodeMap(),
     new \MfZmInfo\Command\ZeroMission\GetRomDataMap()

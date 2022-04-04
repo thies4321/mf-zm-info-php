@@ -9,6 +9,7 @@ use MfZmInfo\Model\Ram\Ram;
 use MfZmInfo\Model\RamInterface;
 use MfZmInfo\Model\RegionInterface;
 use MfZmInfo\Repository\RamRepositoryInterface;
+
 use function array_key_exists;
 use function is_array;
 

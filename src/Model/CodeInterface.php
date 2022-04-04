@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MfZmInfo\Model;
 
-interface CodeInterface
+interface CodeInterface extends RegionInterface
 {
     public function getDescription(): string;
 
@@ -22,4 +22,3 @@ interface CodeInterface
 
     public function getNotes(): ?string;
 }
-

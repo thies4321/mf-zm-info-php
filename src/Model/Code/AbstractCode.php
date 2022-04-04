@@ -9,13 +9,14 @@ use MfZmInfo\Exception\InvalidVariableTypeException;
 use MfZmInfo\Exception\MissingVariableException;
 use MfZmInfo\Model\CodeInterface;
 use MfZmInfo\Model\RegionInterface;
+
 use function array_key_exists;
 use function in_array;
 use function is_a;
 use function is_array;
 use function print_r;
 
-abstract class AbstractCode implements CodeInterface, RegionInterface
+abstract class AbstractCode implements CodeInterface
 {
     protected string $description;
 

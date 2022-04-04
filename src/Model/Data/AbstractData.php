@@ -7,9 +7,10 @@ namespace MfZmInfo\Model\Data;
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Model\DataInterface;
 use MfZmInfo\Model\RegionInterface;
+
 use function in_array;
 
-abstract class AbstractData implements DataInterface, RegionInterface
+abstract class AbstractData implements DataInterface
 {
     protected string $region;
 

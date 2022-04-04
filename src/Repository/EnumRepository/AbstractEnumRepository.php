@@ -8,6 +8,7 @@ use MfZmInfo\Exception\ResourceNotFoundException;
 use MfZmInfo\Model\Game\Fusion;
 use MfZmInfo\Model\GameInterface;
 use MfZmInfo\Repository\EnumRepositoryInterface;
+
 use function file_exists;
 use function file_get_contents;
 use function json_decode;

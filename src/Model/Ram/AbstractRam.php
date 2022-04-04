@@ -7,9 +7,10 @@ namespace MfZmInfo\Model\Ram;
 use MfZmInfo\Exception\InvalidRegionException;
 use MfZmInfo\Model\RamInterface;
 use MfZmInfo\Model\RegionInterface;
+
 use function in_array;
 
-abstract class AbstractRam implements RamInterface, RegionInterface
+abstract class AbstractRam implements RamInterface
 {
     protected string $description;
 

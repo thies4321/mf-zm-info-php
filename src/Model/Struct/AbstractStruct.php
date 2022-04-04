@@ -7,6 +7,7 @@ namespace MfZmInfo\Model\Struct;
 use MfZmInfo\Exception\InvalidVariableTypeException;
 use MfZmInfo\Exception\MissingVariableException;
 use MfZmInfo\Model\StructInterface;
+
 use function array_key_exists;
 use function gettype;
 use function is_null;
